@@ -1,29 +1,48 @@
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import Prueba from "./components/Prueba";
+import Personal from "./components/Personal";
 
 function App() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div id="APP">
+      <Prueba />
+      <Personal />
+    </div>
   );
 }
 
 export default App;
+
+/* 
+Variantes de la funcion
+
+1) La usada arriba
+
+2) export default function App
+
+3) const App = () => {
+  return <div>App</div>
+}
+export default App
+
+
+*/
+
+/* 
+
+class SerVivo {
+  respirar() {
+    console.log("estoy respirando")
+  }
+}
+
+class Humano extends SerVivo {
+  vive: true,
+}
+
+class Persona extends Humano {
+  nombre: "bla bla bla",
+  apellido: "cosa"
+}
+
+*/

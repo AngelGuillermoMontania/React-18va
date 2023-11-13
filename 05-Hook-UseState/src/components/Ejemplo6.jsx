@@ -5,7 +5,7 @@ export default function Ejemplo6({ searchCity }) {
 
   useEffect(() => {
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=Mendoza&units=metric&lang=es&appid=e485382dd61bc4ac8fa0e4b427d20e85`
+      `https://api.openweathermap.org/data/2.5/weather?q=Mendoza&units=metric&lang=es&appid=`
     )
       .then((r) => r.json())
       .then((recurso) => {

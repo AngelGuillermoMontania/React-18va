@@ -1,69 +1,7 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { useFormik } from "formik";
 
 function App() {
-  // const [input, setInput] = useState({
-  //   name: "",
-  //   edad: 0,
-  //   email: "",
-  // });
-
-  // const [error, setError] = useState("");
-
-  // function handleChange(e) {
-  //   const { value, name } = e.target;
-
-  //   if (name === "email") {
-  //     validateEmail(input.email);
-  //   }
-  //   if(name === "edad") {
-  //     validarEdad(input.edad)
-  //   }
-
-  //   setInput({
-  //     ...input,
-  //     [name]: value, // Sintaxis ES6 para actualizar la key correspondiente
-  //   });
-  // }
-
-  // function validateEmail(value) {
-  //   var emailPattern = /\S+@\S+\.\S+/; // Expresion Regular para validar Emails.
-
-  //   if (!emailPattern.test(value)) {
-  //     console.log("entro al if");
-  //     setError("Debe ser un email");
-  //   } else {
-  //     setError("");
-  //   }
-  // }
-
-  // return (
-  //   <>
-  //     <input
-  //       type="text"
-  //       name="name"
-  //       value={input.name}
-  //       onChange={(e) => handleChange(e)}
-  //     />
-  //     <input
-  //       type="number"
-  //       name="edad"
-  //       value={input.edad}
-  //       onChange={(e) => handleChange(e)}
-  //     />
-  //     <input
-  //       type="text"
-  //       name="email"
-  //       value={input.email}
-  //       onChange={(e) => handleChange(e)}
-  //     />
-  //     {!error ? null : <div>{error}</div>}
-  //   </>
-  // );
-
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -71,7 +9,7 @@ function App() {
       email: "",
     },
     validate: (values) => {
-      const errors = {}; //   {email: "Required"}
+      const errors = {};
       if (!values.firstName) {
         errors.firstName = "Required";
       } else if (values.firstName.length > 15) {
@@ -95,21 +33,27 @@ function App() {
       return errors;
     },
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      console.log("hola");
     },
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
+    <form
+      onSubmit={formik.handleSubmit}
+      style={{ display: "flex", flexDirection: "column" }}
+    >
       <label htmlFor="firstName">First Name</label>
       <input
         id="firstName"
         name="firstName"
         type="text"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         value={formik.values.firstName}
       />
-      {formik.errors.firstName ? <div>{formik.errors.firstName}</div> : null}
+      {formik.touched.firstName && formik.errors.firstName ? (
+        <div>{formik.errors.firstName}</div>
+      ) : null}
 
       <label htmlFor="lastName">Last Name</label>
       <input
@@ -117,9 +61,12 @@ function App() {
         name="lastName"
         type="text"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         value={formik.values.lastName}
       />
-      {formik.errors.lastName ? <div>{formik.errors.lastName}</div> : null}
+      {formik.touched.lastName && formik.errors.lastName ? (
+        <div>{formik.errors.lastName}</div>
+      ) : null}
 
       <label htmlFor="email">Email Address</label>
       <input
@@ -127,9 +74,12 @@ function App() {
         name="email"
         type="email"
         onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         value={formik.values.email}
       />
-      {formik.errors.email ? <div>{formik.errors.email}</div> : null}
+      {formik.touched.email && formik.errors.email ? (
+        <div>{formik.errors.email}</div>
+      ) : null}
 
       <button type="submit">Submit</button>
     </form>

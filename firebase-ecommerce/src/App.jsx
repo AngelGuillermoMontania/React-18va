@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 import db from "../firestore.config";
 import { useState } from "react";
+import Header from "./components/Header";
 
 function App() {
   const [productos, setProductos] = useState([]);
@@ -45,8 +46,9 @@ function App() {
   }
 
   return (
-    <Box bgGradient="linear(to-l, #7928CA, #FF0080)" w="100vw" h="100vh">
-      <Button variant="outline" onClick={() => consultarDocumentos()}>
+    <Box bgGradient="linear(to-l, #bebebf, #a9ad27)" w="100vw" h="100vh">
+      <Header />
+      <Button variant="outline" mt="7rem" onClick={() => consultarDocumentos()}>
         CONSULTAR DOCUMENTOS
       </Button>
 

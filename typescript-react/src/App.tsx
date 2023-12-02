@@ -1,10 +1,10 @@
 import "./App.css";
 import Header from "./components/Header";
 
-function App() {
+const App = (): JSX.Element => {
   return (
     <>
-      <RenderListaCompView />
+      <div></div>
     </>
   );
 }
@@ -17,7 +17,7 @@ export default App;
 // const saludo = "Hola"   // ----> Javascript
 // const saludo: string = "Hola" // ----> Typescript
 
-/* Tipos De Datos */
+/* Tipos De Datos (primitivos)*/
 // string
 // number
 // boolean
@@ -34,13 +34,44 @@ export default App;
 /// NO USAR -------  ANY  -------
 
 /* ------ FUNCIONES -------- */
-function Saludar(nombre: string): string {
-  return `Hola ${nombre}`;
+// function Saludar(nombre: string): string {
+//   return `Hola ${nombre}`;
+// }
+
+// const despedir: Function = (nombre: string): string => {
+//   return `Chau ${nombre}`;
+// };
+
+// // Saludar("Adas");
+// despedir("Adas");
+
+/* INTERFACES */
+
+interface Titulo {
+  titulo: string;
 }
 
-const despedir: Function = (nombre: string): string => {
-  return `Chau ${nombre}`;
+interface Persona {
+  // DAR UN TIPADO DE DATO A UN OBJETO
+  nombre: string;
+  apellido: string;
+  edad: number;
+  titulos: Titulo[];
+}
+
+
+
+const profe = {
+  nombre: "Adas",
+  apellido: "Gomez",
+  edad: 23,
+  titulos: [{titulo: "Profesor"}, {titulo: "Desarrollador"}],
 };
 
-Saludar("Adas");
-despedir("Adas");
+const despedir: Function = (obj: Persona): string => {
+  return `Chau ${obj.nombre}`;
+};
+
+despedir(profe);
+
+const fecha = new Date();

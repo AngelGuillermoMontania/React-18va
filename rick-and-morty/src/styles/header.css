@@ -1,0 +1,42 @@
+header {
+    background-image: url('../images/bg2.jpg');
+    background-repeat: no-repeat;
+    height: 15rem;
+    background-size: cover;
+    background-position: center;
+}
+
+
+@font-face{
+    font-family: Shlop;
+    src: url('../fonts/shlop.ttf');
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    height: 100%;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.title {
+    padding: 10px;
+    color: greenyellow;
+    font-size: 5rem;
+    font-family: Shlop;
+}
+
+.text {
+    color: lightblue;
+    font-size: 17px;
+    font-family: Shlop;
+}

@@ -1,60 +1,19 @@
-import { Button, Text, Container, Box } from "@chakra-ui/react";
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  doc,
-  getDoc,
-  addDoc,
-  updateDoc,
-  deleteDoc,
-} from "firebase/firestore";
-import db from "../firestore.config";
-import { useState } from "react";
+import { Box } from "@chakra-ui/react";
 import Header from "./components/Header";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ContainCard from "./components/ContainCard";
+import DetailProduct from "./components/DetailProduct";
 
 function App() {
-  const [productos, setProductos] = useState([]);
-
-  // window.addEventListener("load", async () => {
-  //   let data = [];
-  //   const coleccion = collection(db, "Calzado");
-  //   const docs = await getDocs(coleccion);
-  //   docs.forEach((doc) => {
-  //     // doc.data() is never undefined for query doc snapshots
-  //     data.push({ ...doc.data(), id: doc.id });
-  //   });
-  //   setProductos(data);
-  // });
-
-  function consultarDocumentos() {
-    const coleccion = collection(db, "Calzado");
-    getDocs(coleccion).then((docs) => {
-      docs.forEach((doc) => {
-        // doc.data() is never undefined for query doc snapshots
-        setProductos([...productos, { ...doc.data(), id: doc.id }]);
-      });
-    });
-
-    // const coleccion = collection(db, "Calzado");
-    // const docs = await getDocs(coleccion);
-    // docs.forEach((doc) => {
-    //   // doc.data() is never undefined for query doc snapshots
-    //   setProductos([...productos, { ...doc.data(), id: doc.id }]);
-    // });
-  }
-
   return (
     <Box bgGradient="linear(to-l, #bebebf, #a9ad27)" w="100vw" h="100vh">
       <Header />
-      <Button variant="outline" mt="7rem" onClick={() => consultarDocumentos()}>
-        CONSULTAR DOCUMENTOS
-      </Button>
-
-      {productos.map((calzado) => {
-        return <Text>marca: {calzado.marca}</Text>;
-      })}
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ContainCard />} />
+          <Route path="/detail/:id" element={<DetailProduct />} />
+        </Routes>
+      </BrowserRouter>
     </Box>
   );
 }
